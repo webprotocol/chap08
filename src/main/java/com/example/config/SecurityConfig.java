@@ -22,12 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-			.antMatchers("/cookie/**").authenticated()
+			.antMatchers("/cookie/**").hasRole("ADMIN")
 			.antMatchers("/*").permitAll()
 			.and()
-		.formLogin()
-			.and()
-		.httpBasic();
+		.formLogin();
 	}
 
 }
